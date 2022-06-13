@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<app-head></app-head>
+
+<body class="">
+    <div class="wrapper ">
+        <!-- SideMenu -->
+        <app-sidemenu></app-sidemenu>
+        <!-- END SideMenu -->
+
+        <div class="main-panel">
+            <!-- Navbar -->
+            <app-navbar></app-navbar>
+            <!-- End Navbar -->
+
+            <div class="content">
+                <!-- Header -->
+                <!-- <app-header></app-header> -->
+                <!--END Header -->
+                <!-- Router -->
+                <div class="container-fluid">
+                    <div class="example-button-container">
+                        <div class="example-button-row">
+                            <a mat-mini-fab style="background-color:#28395a;color:white" routerLink="/actualites">
+                                <mat-icon>home</mat-icon>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-light" style="background-color:#28395a">
+                                    <h4 class="card-title ">Update Product </h4>
+                                </div>
+                                <form [formGroup]="producteditFromGroup" (ngSubmit)="onSubmit()">
+                                    <br><br>
+                                    <div class="container">
+                                        <mat-form-field class="col-6">
+                                            <mat-label style="color:black"><strong>Name</strong></mat-label>
+                                            <input matInput formControlName="name">
+                                        </mat-form-field>
+                                        <mat-form-field  class="col-6">
+                                          <mat-label style="color:black"><strong>Type</strong></mat-label>
+                                          <mat-select formControlName="type">
+                                            <mat-option *ngFor="let typeproduct of alltypeproduct" [value]="typeproduct.name">
+                                              {{typeproduct.name}}
+                                            </mat-option>
+                                          </mat-select>
+                                        </mat-form-field>
+                                        <div align="right" style="margin-bottom: 100px;margin-right: 15px;">
+                                          <button routerLink="/dashboard" class="btn btn-secondary" >Cancel</button>
+                                          <button type="submit" class="btn btn-success" [disabled]="producteditFromGroup.invalid">Save</button>
+
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
